@@ -1,5 +1,11 @@
-import datetime
+import time
+from flask import Flask
 
-current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+app = Flask(__name__)
 
-print("The current time is:", current_time)
+@app.route('/')
+def index():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())
+
+if __name__ == '__main__':
+    app.run(debug=True, use_reloader=True)
